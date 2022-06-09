@@ -33,6 +33,8 @@ class MyCloneable implements Cloneable {
 
 public class Main {
     public static void main(String[] args) {
+        Queue<MyCloneable> q1 = new ArrayQueue<>(5);
+        //ArrayQueue<MyCloneable> q2 = (ArrayQueue<MyCloneable>) q1;
         //testPartA();
         //testPartB();
     }

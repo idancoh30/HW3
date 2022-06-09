@@ -1,7 +1,8 @@
 import java.lang.reflect.Array;
 import java.util.Iterator;
 
-public class ArrayQueue<E extends Cloneable> implements Queue, Iterable{
+public class ArrayQueue<E extends Cloneable> implements Queue {
+
     private int front;
     private int rear;
     private int numElements;
