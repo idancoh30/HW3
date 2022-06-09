@@ -1,11 +1,15 @@
 import java.util.Iterator;
 
-public class ArrayQueue<E extends Cloneable> implements Queue, Iterable{
+public class ArrayQueue<E extends Cloneable> implements Queue, Iterable<E>{
     private int front;
     private int rear;
     private int numElements;
     private int capacity;
     private Cloneable[] data;
+
+    public Iterator<E> iterator(){
+        return;
+    }
 
     public ArrayQueue(int capacity)
     {
@@ -42,7 +46,7 @@ public class ArrayQueue<E extends Cloneable> implements Queue, Iterable{
 
     @Override
     public void enqueue(Cloneable element) {
-        if (numElements == capacity) {
+        if (numElements < capacity) {
             rear += 1;
             data[rear] = element;
             numElements++;
