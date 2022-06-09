@@ -1,7 +1,6 @@
-import java.lang.reflect.Array;
 import java.util.Iterator;
 
-public class ArrayQueue<E extends Cloneable> implements Queue {
+public class ArrayQueue<E extends Cloneable> implements Queue<E> {
 
     private int front;
     private int rear;
@@ -11,10 +10,13 @@ public class ArrayQueue<E extends Cloneable> implements Queue {
 
     public ArrayQueue(int capacity)
     {
-        data = (Cloneable[]) new Object[capacity];
-        rear = 0;
-        front = 0;
-        numElements = 0;
+        if(capacity < 0)
+            throw new NegativeCapacityException();
+        this.capacity = capacity;
+        this.data = new Cloneable[capacity];
+        this.rear = 0;
+        this.front = 0;
+        this.numElements = 0;
     }
 
     @Override
@@ -28,17 +30,17 @@ public class ArrayQueue<E extends Cloneable> implements Queue {
     }
 
     @Override
-    public Cloneable peek()
+    public E peek()
     {
-        return data[front];
+        return (E)data[front];
     }
 
-    public Cloneable dequeue()
+    public E dequeue()
     {
         Cloneable head = data[front];
         data[front] = null;
         front +=1;
-        return head;
+        return (E)head;
     }
 
     @Override
