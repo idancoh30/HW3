@@ -33,27 +33,6 @@ class MyCloneable implements Cloneable {
 
 public class Main {
     public static void main(String[] args) {
-//        Queue<MyCloneable> q1 = new ArrayQueue<>(3);
-//        MyCloneable c1 = new MyCloneable(1);
-//        MyCloneable c2 = new MyCloneable(2);
-//        MyCloneable c3 = new MyCloneable(3);
-//        MyCloneable c4 = new MyCloneable(4);
-//        MyCloneable c5 = new MyCloneable(5);
-//        q1.enqueue(c1);
-//        q1.enqueue(c2);
-//        q1.enqueue(c3);
-//        q1.dequeue();
-//        q1.enqueue(c4);
-//        q1.dequeue();
-//        q1.enqueue(c5);
-//        q1.dequeue();
-//        q1.dequeue();
-//        q1.dequeue();
-//        q1.enqueue(c5);
-//
-//        System.out.println("Peek: " + q1.peek());
-
-        //ArrayQueue<MyCloneable> q2 = (ArrayQueue<MyCloneable>) q1;
         testPartA();
         //testPartB();
     }
@@ -79,8 +58,8 @@ public class Main {
 
         try {
             q2.peek();
-        } catch (QueueException e){
-
+        } catch (QueueException e) {
+            System.out.println("The queue is empty");
         }
         System.out.println();
 
@@ -264,7 +243,7 @@ public class Main {
 
     /**
      * Checks all of the scan types for a given ToDoList using different dates.
-
+     *
     private static void checkScans(ToDoList tdl, Date[] dates) {
         System.out.println("Starts scanning...");
         for (Task t : tdl) {

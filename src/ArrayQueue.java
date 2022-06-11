@@ -44,6 +44,7 @@ public class ArrayQueue<E extends Cloneable> implements Queue<E> {
         }
         Cloneable dequeued = data[front];
         if (front == rear) {
+            data[front] = null;
             front = -1;
             rear = -1;
         } else {
@@ -72,24 +73,22 @@ public class ArrayQueue<E extends Cloneable> implements Queue<E> {
     }
 
     public Cloneable getElement(int index) {
-        return (Cloneable) data[index];
+        return data[index];
     }
 
     @Override
     public ArrayQueue clone() {
-        try{
+        try {
             ArrayQueue copy = (ArrayQueue) super.clone(); //casting
             copy.data = data.clone();
             return copy;
-        }
-        catch (CloneNotSupportedException e){
+        } catch (CloneNotSupportedException e) {
             return null;
         }
-
     }
 
     @Override
     public Iterator iterator() {
-        return new ArrayQueueIterator<E>(this);
+        return new ArrayQueueIterator(this);
     }
 }

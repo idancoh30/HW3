@@ -5,13 +5,13 @@ public class ArrayQueueIterator<E extends Cloneable> implements Iterator<E> {
     private int index;
 
     public ArrayQueueIterator(ArrayQueue<E> arrayQueue){
-        this.arrayQueue = arrayQueue;
-        this.index = 0;
+            this.arrayQueue = arrayQueue;
+            this.index = 0;
     }
 
     @Override
     public boolean hasNext() {
-        return (this.index < this.arrayQueue.getCapacity());
+        return (this.index < this.arrayQueue.getCapacity() && arrayQueue.getElement(index) != null);
     }
     @Override
     public E next() {
