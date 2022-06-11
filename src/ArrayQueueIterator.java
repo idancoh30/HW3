@@ -15,13 +15,8 @@ public class ArrayQueueIterator<E extends Cloneable> implements Iterator<E> {
     }
     @Override
     public E next() {
-        return (E)this.arrayQueue.getElement(index+1);
+        E element = (E)this.arrayQueue.getElement(index);
+        index++;
+        return element;
     }
-
-//    @Override
-//    public void remove() {
-//        Iterator.super.remove();
-//    }
-
-
 }
