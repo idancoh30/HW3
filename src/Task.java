@@ -10,6 +10,10 @@ public class Task implements Cloneable {
         this.dueDate = dueDate;
     }
 
+    public void setDueDate(Date dueDate) {
+        this.dueDate = dueDate;
+    }
+
     @Override
     public String toString() {
         String output = "";
