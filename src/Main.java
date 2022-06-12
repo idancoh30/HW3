@@ -33,8 +33,11 @@ class MyCloneable implements Cloneable {
 
 public class Main {
     public static void main(String[] args) {
-        testPartA();
+        //testPartA();
         //testPartB();
+        Task t1 = new Task("Software Engineering HW0", new Date(2022 - 1900, Calendar.APRIL, 13));
+        System.out.println(t1.toString());
+
     }
 
     /**
