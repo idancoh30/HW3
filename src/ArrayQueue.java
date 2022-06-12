@@ -1,3 +1,4 @@
+import java.lang.reflect.Method;
 import java.util.Iterator;
 
 public class ArrayQueue<E extends Cloneable> implements Queue<E> {
@@ -59,7 +60,7 @@ public class ArrayQueue<E extends Cloneable> implements Queue<E> {
         if (isFull())
             throw new QueueOverflowException();
         else {
-            if (front == -1) { // Addition to empty Queue
+            if (front == -1) {
                 front = 0;
             }
             rear = (rear + 1) % capacity;
@@ -77,12 +78,22 @@ public class ArrayQueue<E extends Cloneable> implements Queue<E> {
     }
 
     @Override
-    public ArrayQueue clone() {
+    public ArrayQueue<E> clone() {
         try {
-            ArrayQueue copy = (ArrayQueue) super.clone(); //casting
-            copy.data = data.clone();
+            ArrayQueue<E> copy = (ArrayQueue<E>)super.clone();
+            Cloneable[] copiedData = new Cloneable[this.capacity];
+            for(int i = 0; i < this.capacity; i++){
+                if (data[i] != null) {
+                    Class metaClass = data[i].getClass();
+                    Method m = metaClass.getMethod("clone");
+                    copiedData[i] = (Cloneable)m.invoke(data[i]);
+                }
+            }
+            copy.data = copiedData;
             return copy;
-        } catch (CloneNotSupportedException e) {
+        }
+        catch (Exception e)
+        {
             return null;
         }
     }
