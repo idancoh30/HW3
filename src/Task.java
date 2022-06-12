@@ -1,6 +1,7 @@
 import java.util.Date;
+import java.util.Objects;
 
-public class Task {
+public class Task implements Cloneable {
     private String description;
     private Date dueDate;
 
@@ -10,23 +11,50 @@ public class Task {
     }
 
     @Override
-    public String toString()
-    {
+    public String toString() {
         String output = "";
-        output += "("+description+",";
-        if(dueDate.getDay() < 10)
-        {
-            output += "0"+dueDate.getDay()+".";
+        output += "(" + description + ",";
+        if (dueDate.getDay() < 10) {
+            output += "0" + dueDate.getDay() + ".";
+        } else {
+            output += dueDate.getDay() + ".";
         }
-        else{
-            output += dueDate.getDay()+".";
+        if (dueDate.getMonth() < 10) {
+            output += "0" + dueDate.getMonth() + ".";
+        } else {
+            output += dueDate.getMonth() + ".";
         }
-        if (dueDate.getMonth() < 10){
-            output+= "0"+dueDate.getMonth()+".";
-        }
+        output += (dueDate.getYear() + 1900) + ")";
         return output;
     }
 
+    public String getDescription() {
+        return description;
+    }
 
+    public Date getDueDate() {
+        return dueDate;
+    }
 
+    @Override
+    public boolean equals(Object task) {
+        return this.toString().equals(task.toString());
+
+    }
+
+    @Override
+    public int hashCode() {
+        return this.toString().hashCode();
+    }
+
+    @Override
+    public Task clone() {
+        try {
+            Task copiedTask = (Task) super.clone();
+            copiedTask.dueDate = (Date) dueDate.clone();
+            return copiedTask;
+        } catch (CloneNotSupportedException e) {
+            return null;
+        }
+    }
 }
