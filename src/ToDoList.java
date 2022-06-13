@@ -84,6 +84,11 @@ public class ToDoList implements TaskIterable {
     }
     @Override
     public int hashCode() {
-        return Objects.hash(tasksList);
+        int hash = 0;
+        for(Task t : this)
+        {
+            hash += t.hashCode();
+        }
+        return hash;
     }
 }
