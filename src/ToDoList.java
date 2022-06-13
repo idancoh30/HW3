@@ -1,10 +1,8 @@
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.Iterator;
-import java.util.Objects;
+import java.util.*;
 
 public class ToDoList implements TaskIterable {
     private ArrayList<Task> tasksList;
+    private Date maxDate;
 
     public ToDoList() {
         tasksList = new ArrayList<>();
@@ -33,6 +31,19 @@ public class ToDoList implements TaskIterable {
 
     @Override
     public void setScanningDueDate(Date dueDate) {
+        if(dueDate == null)
+            this.maxDate = null;
+        else {
+            this.maxDate = dueDate;
+        }
+    }
+
+    public void sortList()
+    {
+        Comparator<Task> dueDateComparator = Comparator.comparing(Task::getDueDate);
+        Comparator<Task> descriptionComprator = Comparator.comparing(Task::getDescription);
+        Comparator<Task> comprator = dueDateComparator.thenComparing(descriptionComprator);
+        Collections.sort(this.getTasksList(), comprator);
     }
 
     public ArrayList<Task> getTasksList() {
@@ -41,7 +52,7 @@ public class ToDoList implements TaskIterable {
 
     @Override
     public Iterator<Task> iterator() {
-        return new ToDoListIterator(this, 0);
+        return new ToDoListIterator(this, 0,maxDate);
     }
 
 
@@ -58,32 +69,6 @@ public class ToDoList implements TaskIterable {
         }
     }
 
-    /*
-    @Override
-    public boolean equals(Object o) {
-        ToDoList otherTasks = (ToDoList) o;
-        int thisCounter = 0;
-        int otherCounter = 0;
-        for (Task t : this) {
-            if (otherTasks.getTasksList().contains(t)) {
-                thisCounter++;
-            }
-
-        }
-        for (Task t : ((ToDoList) o).getTasksList()) {
-            if (this.getTasksList().contains(t)) {
-                otherCounter++;
-
-            }
-        }
-        if (thisCounter + otherCounter == this.getSize() + ((ToDoList) o).getSize()) {
-            return true;
-        } else {
-            return false;
-        }
-    }
-*/
-
     @Override
     public boolean equals(Object o)
     {
@@ -97,8 +82,6 @@ public class ToDoList implements TaskIterable {
         }
         return true;
     }
-
-
     @Override
     public int hashCode() {
         return Objects.hash(tasksList);

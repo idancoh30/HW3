@@ -1,3 +1,4 @@
+import java.sql.SQLOutput;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -34,9 +35,15 @@ class MyCloneable implements Cloneable {
 public class Main {
     public static void main(String[] args) {
         ToDoList l1 = new ToDoList();
-        Task t1 = new Task("Software Engineering HW0", new Date(2022 - 1900, Calendar.APRIL, 13));
-        t1.toString();
-
+        Task t1 = new Task("Software Engineering HW0", new Date(2022 - 1900, Calendar.MAY, 05));
+        Task t2 = new Task("Software Engineering HW1", new Date(2022 - 1900, Calendar.MAY, 05));
+        Task t3 = new Task("Software Engineering HW2", new Date(2022 - 1900, Calendar.MAY, 06));
+        Task t4 = new Task("Software Engineering HW3", new Date(2022 - 1900, Calendar.MAY, 07));
+        l1.addTask(t2);
+        l1.addTask(t1);
+        l1.setScanningDueDate(new Date(2022 - 1900, Calendar.MAY, 06));
+        for(Task t : l1)
+            System.out.println(t);
     }
 
     /**
