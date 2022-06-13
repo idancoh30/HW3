@@ -2,7 +2,7 @@ import java.util.Date;
 import java.util.Objects;
 
 public class Task implements Cloneable {
-    private String description;
+    private final String description;
     private Date dueDate;
 
     public Task(String description, Date dueDate) {
@@ -42,8 +42,9 @@ public class Task implements Cloneable {
 
     @Override
     public boolean equals(Object task) {
+        if(task == null)
+            return false;
         return this.toString().equals(task.toString());
-
     }
 
     @Override

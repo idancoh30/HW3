@@ -1,5 +1,7 @@
 import java.lang.reflect.Method;
+import java.util.Arrays;
 import java.util.Iterator;
+import java.util.Objects;
 
 /**
  * Queue to order elements in a FIFO (=First in first out) manner, implemented by cyclic array.
@@ -153,5 +155,12 @@ public class ArrayQueue<E extends Cloneable> implements Queue<E> {
     @Override
     public Iterator iterator() {
         return new ArrayQueueIterator(this);
+    }
+
+    @Override
+    public int hashCode() {
+        int result = Objects.hash(front, rear, numElements, capacity);
+        result = 31 * result + Arrays.hashCode(data);
+        return result;
     }
 }
