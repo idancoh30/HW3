@@ -60,7 +60,6 @@ public class ToDoList implements TaskIterable {
         return tasksList.size();
     }
 
-
     @Override
     public String toString() {
         String output = "[";
@@ -101,10 +100,8 @@ public class ToDoList implements TaskIterable {
 
     @Override
     public Iterator<Task> iterator() {
-
         return new ToDoListIterator(this, 0,maxDate);
     }
-
 
     @Override
     public ToDoList clone() {
@@ -132,6 +129,7 @@ public class ToDoList implements TaskIterable {
         }
         return true;
     }
+
     @Override
     public int hashCode() {
         int hash = 0;

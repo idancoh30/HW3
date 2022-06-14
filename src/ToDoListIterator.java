@@ -6,15 +6,14 @@ public class ToDoListIterator implements Iterator<Task> {
     private int index;
     private Date maxDate;
 
-    public ToDoListIterator(ToDoList tasksList, int index, Date maxDueDate) {
-        this.tasksList = tasksList;
+    public ToDoListIterator(ToDoList tL, int index, Date maxDueDate) {
+        this.tasksList = tL;
         this.index = index;
         this.maxDate = maxDueDate;
     }
 
     @Override
     public boolean hasNext() {
-        this.tasksList.sortList();
         if (this.maxDate == null) {
             return (this.index < tasksList.getSize() && this.tasksList.getTaskByIndex(index) != null);
         } else {
