@@ -7,7 +7,7 @@ public class ToDoListIterator implements Iterator<Task> {
     private Date maxDate;
 
     public ToDoListIterator(ToDoList tL, int index, Date maxDueDate) {
-        this.tasksList = tL;
+        this.tasksList = tL.clone();
         tasksList.sortList();
         this.index = index;
         this.maxDate = maxDueDate;
