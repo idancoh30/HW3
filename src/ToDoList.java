@@ -107,7 +107,7 @@ public class ToDoList implements TaskIterable {
     public ToDoList clone() {
         try {
             ToDoList copiedTasks = new ToDoList();
-            for (Task t : this) {
+            for (Task t : this.tasksList) {
                 copiedTasks.addTask(t.clone());
             }
             return copiedTasks;
@@ -121,7 +121,7 @@ public class ToDoList implements TaskIterable {
     {
         if(o == null || this.getSize() != ((ToDoList) o).getSize())
             return false;
-        for(Task t : this)
+        for(Task t : this.getTasksList())
         {
             if(((ToDoList) o).getTasksList().contains(t))
                 continue;
@@ -133,7 +133,7 @@ public class ToDoList implements TaskIterable {
     @Override
     public int hashCode() {
         int hash = 0;
-        for(Task t : this)
+        for(Task t : this.tasksList)
         {
             hash += t.hashCode();
         }

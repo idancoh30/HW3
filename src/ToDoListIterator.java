@@ -8,6 +8,7 @@ public class ToDoListIterator implements Iterator<Task> {
 
     public ToDoListIterator(ToDoList tL, int index, Date maxDueDate) {
         this.tasksList = tL;
+        tasksList.sortList();
         this.index = index;
         this.maxDate = maxDueDate;
     }
