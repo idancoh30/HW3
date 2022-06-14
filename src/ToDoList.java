@@ -8,17 +8,58 @@ public class ToDoList implements TaskIterable {
         tasksList = new ArrayList<>();
     }
 
-    public void addTask(Task task) {
-        if (tasksList.contains(task)) {
+//    public void addTask(Task task) {
+//        if (tasksList.contains(task.getDescription())) {
+//            throw new TaskAlreadyExistsException();
+//        } else {
+//            tasksList.add(task);
+//        }
+//    }
+/*
+    public void addTask(Task task)
+    {
+        if(this.getTasksList().contains(task))
             throw new TaskAlreadyExistsException();
-        } else {
-            tasksList.add(task);
+        if(task == null)
+            return;
+        for(int i = 0; i < this.getSize(); i++)
+        {
+            if(this.getTaskByIndex(i).getDescription().equals(task.getDescription()))
+            {
+                throw new TaskAlreadyExistsException();
+            }
+        }
+        tasksList.add(task);
+        for(Task t : this)
+        {
+            if (t.getDescription().equals(task.getDescription()))
+                throw new TaskAlreadyExistsException();
+        }
+        tasksList.add(tasksList.size(), task);
+    }*/
+
+    public void addTask(Task t)
+    {
+        int size = this.getSize();
+        boolean flag = false;
+        if(this.getTasksList() == null)
+            this.tasksList.add(t);
+        for(int i = 0; i < size; i++)
+        {
+          if(this.getTaskByIndex(i).getDescription().equals(t.getDescription()))
+              flag = true;
+        }
+        if(flag) {
+            throw new TaskAlreadyExistsException(); }
+        else {
+            this.tasksList.add(t);
         }
     }
 
     public int getSize() {
         return tasksList.size();
     }
+
 
     @Override
     public String toString() {
@@ -60,6 +101,7 @@ public class ToDoList implements TaskIterable {
 
     @Override
     public Iterator<Task> iterator() {
+
         return new ToDoListIterator(this, 0,maxDate);
     }
 

@@ -14,10 +14,10 @@ public class ToDoListIterator implements Iterator<Task> {
 
     @Override
     public boolean hasNext() {
+        this.tasksList.sortList();
         if (this.maxDate == null) {
             return (this.index < tasksList.getSize() && this.tasksList.getTaskByIndex(index) != null);
         } else {
-            this.tasksList.sortList();
             return (this.index < tasksList.getSize() && this.tasksList.getTaskByIndex(index).getDueDate().compareTo(maxDate) <= 0);
         }
     }
