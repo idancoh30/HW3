@@ -22,7 +22,15 @@ public class ToDoList implements TaskIterable {
 
     @Override
     public String toString() {
-        return tasksList.toString();
+        String output = "[";
+        for(int i = 0; i < this.getSize(); i++){
+            if (i != this.getSize()-1)
+                output += "("+this.getTaskByIndex(i).toString()+"), ";
+            else
+                output += "("+this.getTaskByIndex(i).toString()+")";
+        }
+        output += "]";
+        return output;
     }
 
     public Task getTaskByIndex(int index) {

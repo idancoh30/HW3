@@ -1,4 +1,3 @@
-import java.sql.SQLOutput;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -34,19 +33,8 @@ class MyCloneable implements Cloneable {
 
 public class Main {
     public static void main(String[] args) {
-        ToDoList l1 = new ToDoList();
-        ToDoList l2 = new ToDoList();
-        Task t1 = new Task("Software Engineering HW0", new Date(2022 - 1900, Calendar.MAY, 05));
-        Task t2 = new Task("Software Engineering HW1", new Date(2022 - 1900, Calendar.MAY, 05));
-        Task t3 = new Task("Software Engineering HW2", new Date(2022 - 1900, Calendar.MAY, 06));
-        Task t4 = new Task("Software Engineering HW3", new Date(2022 - 1900, Calendar.MAY, 07));
-        l1.addTask(t2);
-        l1.addTask(t1);
-        l2.addTask(t1);
-        l2.addTask(t2);
-        System.out.println(l2.hashCode());
-        System.out.println(l1.hashCode());
-
+        testPartA();
+        testPartB();
     }
 
     /**
@@ -155,7 +143,7 @@ public class Main {
 
     /**
      * Tests for part B.
-     *
+     */
     private static void testPartB() {
         ToDoList l1 = new ToDoList();
         for (Task t : l1) {
@@ -251,11 +239,11 @@ public class Main {
         checkScans(l3, dates);
 
         System.out.println("\nTesting of part B is over!");
-    }*/
+    }
 
     /**
      * Checks all of the scan types for a given ToDoList using different dates.
-     *
+     */
     private static void checkScans(ToDoList tdl, Date[] dates) {
         System.out.println("Starts scanning...");
         for (Task t : tdl) {
@@ -277,5 +265,5 @@ public class Main {
         }
 
         System.out.println("Done scanning");
-    }*/
+    }
 }

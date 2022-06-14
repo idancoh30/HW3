@@ -17,18 +17,18 @@ public class Task implements Cloneable {
     @Override
     public String toString() {
         String output = "";
-        output += "(" + description + ",";
-        if (dueDate.getDay() < 10) {
-            output += "0" + dueDate.getDay() + ".";
+        output += description + ", ";
+        if (dueDate.getDate() < 10) {
+            output += "0" + dueDate.getDate() + ".";
         } else {
-            output += dueDate.getDay() + ".";
+            output += dueDate.getDate() + ".";
         }
         if (dueDate.getMonth() < 10) {
-            output += "0" + dueDate.getMonth() + ".";
+            output += "0" + (dueDate.getMonth()+1) + ".";
         } else {
             output += dueDate.getMonth() + ".";
         }
-        output += (dueDate.getYear() + 1900) + ")";
+        output += (dueDate.getYear() + 1900);
         return output;
     }
 
